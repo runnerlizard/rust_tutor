@@ -21,6 +21,49 @@ impl Rectangle {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle {
+            w: 8,
+            h: 7,
+        };
+        let smaller = Rectangle {
+            w: 6,
+            h: 5,
+        };
+
+        assert!(larger.can_hold(&smaller));
+    }
+
+    #[test]
+    fn smaller_cannot_hold_larger() {
+        let larger = Rectangle {
+            w: 8,
+            h: 7,
+        };
+        let smaller = Rectangle {
+            w: 6,
+            h: 5,
+        };
+
+        assert!(!smaller.can_hold(&larger));
+    }
+
+    #[test]
+    fn can_hold_equal() {
+        let larger = Rectangle {
+            w: 8,
+            h: 7,
+        };
+
+        assert!(larger.can_hold(&larger));
+    }
+}
+
 fn main() {
     let w = 30;
     let h = 40;
